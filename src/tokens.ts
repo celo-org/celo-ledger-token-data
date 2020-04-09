@@ -1,7 +1,5 @@
 
 import blob from "./data"
-import TransportNodeHid from "@ledgerhq/hw-transport-node-hid"
-import AppEth from "@ledgerhq/hw-app-eth"
 
 /**
  * Retrieve the token information by a given contract address if any
@@ -78,6 +76,10 @@ const get: () => API = (() => {
   }
 })()
 
+/*
+import TransportNodeHid from "@ledgerhq/hw-transport-node-hid"
+import AppEth from "@ledgerhq/hw-app-eth"
+
 async function example() {
   const cUSDInfo = byContractAddress('0xee21fae7d422c551e59ec68f56b6899e149537c1')
   console.log(cUSDInfo)
@@ -95,3 +97,4 @@ async function example() {
   console.log(result)
 }
 example().then(res => console.log(res)).catch(e => console.log(e))
+*/
