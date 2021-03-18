@@ -39,17 +39,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
+exports.list = exports.byContractAddress = void 0;
 var data_1 = __importDefault(require("./data"));
-var hw_transport_node_hid_1 = __importDefault(require("@ledgerhq/hw-transport-node-hid"));
-var hw_app_eth_1 = __importDefault(require("@ledgerhq/hw-app-eth"));
 /**
  * Retrieve the token information by a given contract address if any
  */
-exports.byContractAddress = function (contract) { return get().byContract(asContractAddress(contract)); };
+var byContractAddress = function (contract) { return get().byContract(asContractAddress(contract)); };
+exports.byContractAddress = byContractAddress;
 /**
  * list all the ERC20 tokens informations
  */
-exports.list = function () { return get().list(); };
+var list = function () { return get().list(); };
+exports.list = list;
 var asContractAddress = function (addr) {
     var a = addr.toLowerCase();
     return a.startsWith("0x") ? a : "0x" + a;
@@ -102,33 +103,8 @@ var get = (function () {
 })();
 function example() {
     return __awaiter(this, void 0, void 0, function () {
-        var cUSDInfo, transport, appEth, res, result;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    cUSDInfo = exports.byContractAddress('0xee21fae7d422c551e59ec68f56b6899e149537c1');
-                    console.log(cUSDInfo);
-                    console.log(cUSDInfo.data.toString('hex'));
-                    return [4 /*yield*/, hw_transport_node_hid_1["default"].open("")];
-                case 1:
-                    transport = _a.sent();
-                    transport.setDebugMode(true);
-                    appEth = new hw_app_eth_1["default"](transport);
-                    console.log('setting data');
-                    if (!cUSDInfo) return [3 /*break*/, 3];
-                    return [4 /*yield*/, appEth.provideERC20TokenInformation(cUSDInfo)];
-                case 2:
-                    res = _a.sent();
-                    console.log(res);
-                    _a.label = 3;
-                case 3:
-                    console.log('set data');
-                    return [4 /*yield*/, appEth.signTransaction("44'/52752'/0'/0/0", "f8ae8085012a05f20082f3ea80808094ee21fae7d422c551e59ec68f56b6899e149537c180b844a9059cbb00000000000000000000000077bb6b73a9fd96033b405c43f0f7f30bea77bbcb0000000000000000000000000000000000000000000000056bc75e2d631000008208bda09993e3644da1b4db6f3d646808728ba71de63ad1c55a23c5cd124b2af7f1fac1a0753a87738695b1b503d1901920e8f535978c68bdb95f67c3ea2801d90192b2df")];
-                case 4:
-                    result = _a.sent();
-                    console.log(result);
-                    return [2 /*return*/];
-            }
+            return [2 /*return*/, get().list()];
         });
     });
 }

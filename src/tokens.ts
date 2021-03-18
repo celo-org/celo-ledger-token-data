@@ -76,25 +76,7 @@ const get: () => API = (() => {
   }
 })()
 
-/*
-import TransportNodeHid from "@ledgerhq/hw-transport-node-hid"
-import AppEth from "@ledgerhq/hw-app-eth"
-
 async function example() {
-  const cUSDInfo = byContractAddress('0xee21fae7d422c551e59ec68f56b6899e149537c1')
-  console.log(cUSDInfo)
-  console.log(cUSDInfo!.data.toString('hex'))
-  const transport = await TransportNodeHid.open("")
-  transport.setDebugMode(true)
-  const appEth = new AppEth(transport)
-  console.log('setting data')
-  if (cUSDInfo) {
-    const res = await appEth.provideERC20TokenInformation(cUSDInfo)
-    console.log(res)
-  }
-  console.log('set data')
-  const result = await appEth.signTransaction("44'/52752'/0'/0/0", "f8ae8085012a05f20082f3ea80808094ee21fae7d422c551e59ec68f56b6899e149537c180b844a9059cbb00000000000000000000000077bb6b73a9fd96033b405c43f0f7f30bea77bbcb0000000000000000000000000000000000000000000000056bc75e2d631000008208bda09993e3644da1b4db6f3d646808728ba71de63ad1c55a23c5cd124b2af7f1fac1a0753a87738695b1b503d1901920e8f535978c68bdb95f67c3ea2801d90192b2df")
-  console.log(result)
+  return get().list()
 }
 example().then(res => console.log(res)).catch(e => console.log(e))
-*/
